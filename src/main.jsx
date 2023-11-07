@@ -13,6 +13,7 @@ import LogIn from './Pages/LogIn/LogIn';
 import Registration from './Pages/Registration/Registration';
 import AvailableFood from './Pages/AvailableFood/AvailableFood';
 import AuthProvider from './AuthContext/AuthProvider';
+import SingleFood from './Pages/SingleFood';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,11 @@ const router = createBrowserRouter([
       {
         path:"/LogIn",
         element:<LogIn></LogIn> 
+      },
+      {
+        path:"/food/:id",
+        element:<SingleFood></SingleFood>,
+        loader: ({ params }) => fetch(`http://localhost:5000/food/${params.id}`) 
       },
       {
         path:"/availableFood",
