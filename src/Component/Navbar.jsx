@@ -1,13 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import './Navbar'
 
 
 const Navbar = () => {
     const menu = <>
-    <li><Link to="/">Home</Link></li>
-    <li><Link>Available Food</Link></li>
-    <li><Link>Add Food</Link></li>
-    <li><Link>Manage My Food</Link></li>
-    <li><Link>My Food Request</Link></li>
+    <li><NavLink to="/">Home</NavLink></li>
+    <li><NavLink to="/availableFood">Available Food</NavLink></li>
+    <li><NavLink to='/addFood'>Add Food</NavLink></li>
+    <li><NavLink to='/manageFood'>Manage My Food</NavLink></li>
+    <li><NavLink to='/requestFood'>My Food Request</NavLink></li>
     </>
     return (
         <div className="navbar bg-base-100">

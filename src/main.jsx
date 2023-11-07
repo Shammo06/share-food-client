@@ -11,6 +11,7 @@ import App from './App';
 import Home from './Pages/Home/Home';
 import LogIn from './Pages/LogIn/LogIn';
 import Registration from './Pages/Registration/Registration';
+import AvailableFood from './Pages/AvailableFood/AvailableFood';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path:"/LogIn",
         element:<LogIn></LogIn> 
+      },
+      {
+        path:"/availableFood",
+        element: <AvailableFood></AvailableFood>
       }
     ]
   },
