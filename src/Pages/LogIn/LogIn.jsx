@@ -1,12 +1,39 @@
-import { Link } from "react-router-dom";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../AuthContext/AuthProvider";
+import auth from "../../firebase/firebase.config";
+import swal from "sweetalert";
 
 
 const LogIn = () => {
-    const handleSubmit = e =>{
-        e.preventDefault()
-        const email = e.target.email.value
-        const password = e.target.password.value
-        console.log(email,password)
+    
+    const provider = new GoogleAuthProvider();
+    const {logIn} = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const handleSubmit = e =>{       
+        e.preventDefault();
+        const password = e.target.password.value;
+        const email = e.target.email.value;        
+        logIn(email,password)
+        .then(result=>{
+            console.log(result)
+            navigate('/')
+                     
+        })
+        .catch((error)=>{
+            swal(`${error.message}`)
+        })
+    }
+
+    const handleClick = () => {
+        signInWithPopup(auth,provider)
+        .then(result =>{
+            console.log(result.user)
+            navigate('/')
+        })
+        .catch(error=>console.log(error.message))
     }
     return (
         <div className="py-10 bg-purple-200 ">
@@ -32,7 +59,7 @@ const LogIn = () => {
             <button className="btn btn-warning bg-indigo-600 rounded-full  text-purple-50">Log In</button>
             </div>
             <div  className="form-control mt-2">
-            <button className="btn btn-warning bg-indigo-600 rounded-full  text-purple-50">Log In With Google</button>
+            <button onClick={handleClick} className="btn btn-warning bg-indigo-600 rounded-full  text-purple-50">Log In With Google</button>
             </div>
             <div className="mb-6 mx-auto">
             <p>Do not Have Account? <Link className="text-blue-500 font-bold" to='/registration'>Go Register</Link></p> 
