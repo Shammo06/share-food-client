@@ -13,7 +13,7 @@ import LogIn from './Pages/LogIn/LogIn';
 import Registration from './Pages/Registration/Registration';
 import AvailableFood from './Pages/AvailableFood/AvailableFood';
 import AuthProvider from './AuthContext/AuthProvider';
-import SingleFood from './Pages/SingleFood';
+import SingleFood from './Pages/SingleFood/SingleFood';
 
 const router = createBrowserRouter([
   {

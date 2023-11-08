@@ -2,33 +2,37 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Select from 'react-select';
 
+
 const AvailableFood = () => {
+
+
     const navigate = useNavigate();
 
-   const [value,setValue] = useState(null);
-   const [sort,setSort] = useState(null); 
+   const [value,setValue] = useState({value:''});
+   const [sort,setSort] = useState({value:1}); 
    const [data,setData] = useState([])
    
    
    useEffect(()=>{
-       fetch(`http://localhost:5000/food?foodName=${value}&date${sort}`)
+       fetch(`http://localhost:5000/food?foodName=${value?.value}&date=${sort?.value}`)
        .then(res => res.json())
        .then(data=> setData(data))
    })
 
     const options = [
-        { value: false, label: 'All Food' },
-        { value: 'biriyani', label: 'Biriyani' },
-        { value: 'mutton', label: 'Mutton' },
-        { value: 'chicken', label: 'Chicken' },
-        { value: 'curd', label: 'Curd' },
-        { value: 'khichuri', label: 'Khichuri' },
+        { value: '', label: 'All Food' },
+        { value: 'Biriyani', label: 'Biriyani' },
+        { value: 'Mutton', label: 'Mutton' },
+        { value: 'Chicken', label: 'Chicken' },
+        { value: 'Curdd', label: 'Curd' },
+        { value: 'Khichuri', label: 'Khichuri' }
     ];
     const sorting = [
         { value: 1, label: 'Oldest' },
         { value: -1, label: 'Newest' },
     ];
 
+    console.log(sort,value)
 
     const handleClick = (id) => {
         navigate(`/food/${id}`)
@@ -37,13 +41,15 @@ const AvailableFood = () => {
     return (
        <div className="">
             <div>
-                <div className="md:flex w-80 gap-4">
+                <div className="w-80 gap-4">
+                    <h1>Sort By Food Name</h1>
                     <Select className='w-44'
                     options={options}
                     defaultValue={value}
                     onChange={setValue}
                     placeholder={'All Food'} 
                     />
+                    <h1>Sort By Date</h1>
                     <Select className='w-44'
                     options={sorting}
                     defaultValue={sort}
@@ -51,7 +57,7 @@ const AvailableFood = () => {
                     placeholder={'sort'} 
                     />                
                 </div>
-                <button className=' btn bg-green-400 rounded-lg w-44 md:w-80'>Search</button>
+               
             </div>
             <div className="grid grid-cols-3 px-28">
                 {
