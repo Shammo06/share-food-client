@@ -10,11 +10,12 @@ const SingleFood = () => {
            pickup: data.pickup,
            reqDate: '2023-11-8',
            reqEmail:'aabaa@gmail.com',
-           donation: data.donator.email,
-           donationName: data.donator.name,
+           donation: data.donarEmail,
+           donationName: data.donarName,
            status: data.status,
            money: money,
-           notes:note
+           notes:note,
+           expire: data.date
           })
           .then(response  => {
             console.log(response);
@@ -30,7 +31,7 @@ const SingleFood = () => {
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center">
                 <h1 className="text-5xl font-bold">Donator Information</h1>
-                <p className="py-6">Donator Name:{data.donator.name}<br/>Location: {data.pickup}</p>
+                <p className="py-6">Donator Name:{data.donarName}<br/>Location: {data.pickup}</p>
                 </div>
                 <div className="card w-96 bg-base-100 shadow-xl">
                 <figure><img className='h-96' src={data.foodImage} alt="Shoes" /></figure>
@@ -51,9 +52,9 @@ const SingleFood = () => {
                         <img src={data.foodImage} alt="" />
                         <h3 className="font-bold text-lg">Food Name: {data.foodName}</h3>
                         <h3 className=" text-lg">Food Id:{data._id}</h3>
-                        <h3 className="font-bold text-lg">Donar: {data.donator.name}</h3>
-                        <h3 className=" text-lg">Donar Email: {data.donator.email}</h3>
-                        <h3 className=" text-lg">User Email: {data.donator.email}</h3>
+                        <h3 className="font-bold text-lg">Donar: {data.donarName}</h3>
+                        <h3 className=" text-lg">Donar Email: {data.donarEmail}</h3>
+                        <h3 className=" text-lg">User Email: {data.donarEmail}</h3>
                         <h3 className=" text-lg">Date: current Date</h3>
                         <h3 className=" text-lg">Location: {data.pickup}</h3>
                         <h3 className=" text-lg">Expire: {data.date}</h3>

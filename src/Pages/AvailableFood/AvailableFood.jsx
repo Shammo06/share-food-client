@@ -77,10 +77,10 @@ const AvailableFood = () => {
                             <p>{data.additionalNotes}</p>                            
                             <div className="">
                                 <h2 className="card-title">
-                                Donate By:<br/> {data.donator.name}
-                                <div className="badge badge-secondary">{data.donator.image}</div>
+                                Donate By:<br/> {data.donatorName}
+                                <div className="badge badge-secondary">{data.donatorImage}</div>
                                 </h2>
-                                Email: {data.donator.email}
+                                Email: {data.donatorEmail}
                             </div>
                             <button onClick={() => handleClick(data._id)} className='btn btn-primary'>View Details</button>
                         </div>

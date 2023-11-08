@@ -14,6 +14,8 @@ import Registration from './Pages/Registration/Registration';
 import AvailableFood from './Pages/AvailableFood/AvailableFood';
 import AuthProvider from './AuthContext/AuthProvider';
 import SingleFood from './Pages/SingleFood/SingleFood';
+import MyReqFood from './Pages/MyReqFood/MyReqFood';
+import AddFood from './Pages/AddFood/AddFood';
 
 const router = createBrowserRouter([
   {
@@ -41,6 +43,14 @@ const router = createBrowserRouter([
       {
         path:"/availableFood",
         element: <AvailableFood></AvailableFood>
+      },
+      {
+        path:"/requestfood",
+        element: <MyReqFood></MyReqFood>
+      },
+      {
+        path:"/addFood",
+        element: <AddFood></AddFood>
       }
     ]
   },
