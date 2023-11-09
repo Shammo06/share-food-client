@@ -16,6 +16,7 @@ import AuthProvider from './AuthContext/AuthProvider';
 import SingleFood from './Pages/SingleFood/SingleFood';
 import MyReqFood from './Pages/MyReqFood/MyReqFood';
 import AddFood from './Pages/AddFood/AddFood';
+import ManageFood from './Pages/ManageFood/ManageFood';
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
       {
         path:"/addFood",
         element: <AddFood></AddFood>
+      },
+      {
+        path:"/manage",
+        element: <ManageFood></ManageFood>
       }
     ]
   },
