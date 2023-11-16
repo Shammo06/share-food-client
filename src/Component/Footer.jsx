@@ -1,7 +1,7 @@
 import logo from '../../public/logo.png'
 const Footer = () => {
     return (
-        <div>
+        <div className="py-4">
             <footer className="footer p-10  bg-neutral text-neutral-content">
             <aside>
                 <img className='w-24 rounded h-10' src={logo} alt="" />
@@ -27,7 +27,7 @@ const Footer = () => {
                 <a className="link link-hover">Cookie policy</a>
             </nav>
             </footer>
-            <footer className="footer items-center p-4 bg-base-200 text-base-content">
+            <footer className="footer items-center p-4 bg-green-600 text-base-content">
                 <aside className="items-center grid-flow-col">
                     <img className='w-24 rounded h-10' src={logo} alt="" />
                     <p>Copyright © 2023 - All right reserved to Feeding world</p>

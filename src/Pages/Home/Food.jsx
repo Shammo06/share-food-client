@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 const Food = () => {
@@ -27,12 +27,13 @@ const Food = () => {
 
     return (
         <div className="">
-            <div className="grid grid-cols-3 px-28">
+            <div className="text-4xl text-center text-fuchsia-900 font-bold py-4">Available Food</div>
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-4">
                 {
-                    data.map(data =>
+                    data.slice(0,6).map(data =>
                        <div key={data._id} className="">
                        <div className="card w-96 bg-base-100 shadow-xl">
-                        <figure><img className='h-96' src={data.foodImage} alt="Shoes" /></figure>
+                        <figure><img className='h-96' src={data.foodImage} alt="food" /></figure>
                         <div className="card-body">
                             <div className="card-actions justify-end">
                             <div className="badge badge-outline">Expire: {data.date}</div> 
@@ -50,15 +51,17 @@ const Food = () => {
                                 </h2>
                                 Email: {data.donatorEmail}
                             </div>
-                            <button onClick={() => handleClick(data._id)} className='btn btn-primary'>View Details</button>
+                            <button onClick={() => handleClick(data._id)} className='btn btn-primary '>View Details</button>
                         </div>
                         </div>
                        </div>
                     )
                    
                 }
-        </div>
-            <button>See All Available Food</button>
+            </div>
+            <div className="text-center py-4">
+                <button onClick={handleView} className='btn btn-primary mx-auto '>See All Available Food</button>
+            </div>
         </div>
     );
 };

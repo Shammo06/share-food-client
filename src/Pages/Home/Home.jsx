@@ -5,7 +5,7 @@ import Newsletter from "./Newsletter";
 
 const Home = () => {
     return (
-        <div className='px-5 lg:px-20'>
+        <div className='md:px-10 lg:px-20'>
             <Banner></Banner>
             <Help></Help>
             <Food></Food>
