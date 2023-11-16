@@ -10,8 +10,7 @@ const SingleFood = () => {
     const data = useLoaderData();
     const {user} = useContext(AuthContext);
     const reqDate = moment().format('YYYY-MM-DD')
-    console.log(user.email)
-    
+       
     const handleClick = (note,money) => {                 
         axios.post('http://localhost:5000/requestfood', {
            foodName:data.foodName,
