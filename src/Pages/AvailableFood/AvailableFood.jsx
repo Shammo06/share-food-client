@@ -32,7 +32,7 @@ const AvailableFood = () => {
         { value: -1, label: 'Newest' },
     ];
 
-    console.log(sort,value)
+
 
     const handleClick = (id) => {
         navigate(`/food/${id}`)
@@ -59,11 +59,18 @@ const AvailableFood = () => {
                 </div>
                
             </div>
-            <div className="grid grid-cols-3 px-28">
+            <div className="text-center text-5xl text-fuchsia-900 font-bold py-4">
+                {
+                    value.value?<h1>{value.value}</h1>
+                    :
+                    <h1>All Food</h1>
+                }
+            </div>
+            <div className="grid lg:grid-cols-3 md:grid-cols-2  md:px-20 lg:px-28">
                 {
                     data ? data.map(data =>
                        <div key={data._id} className="">
-                       <div className="card w-96 bg-base-100 shadow-xl">
+                       <div className="card w-full md:w-96 bg-base-100 shadow-xl">
                         <figure><img className='h-96' src={data.foodImage} alt="Shoes" /></figure>
                         <div className="card-body">
                             <div className="card-actions justify-end">

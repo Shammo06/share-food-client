@@ -32,7 +32,7 @@ const Food = () => {
                 {
                     data.slice(0,6).map(data =>
                        <div key={data._id} className="">
-                       <div className="card w-96 bg-base-100 shadow-xl">
+                       <div className="card w-full md:w-96 bg-base-100 shadow-xl">
                         <figure><img className='h-96' src={data.foodImage} alt="food" /></figure>
                         <div className="card-body">
                             <div className="card-actions justify-end">
