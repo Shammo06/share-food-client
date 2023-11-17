@@ -1,6 +1,6 @@
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthContext/AuthProvider";
 import auth from "../../firebase/firebase.config";
 import swal from "sweetalert";
@@ -11,6 +11,8 @@ const LogIn = () => {
     const provider = new GoogleAuthProvider();
     const {logIn} = useContext(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
+   
 
     const handleSubmit = e =>{       
         e.preventDefault();
@@ -19,7 +21,7 @@ const LogIn = () => {
         logIn(email,password)
         .then(result=>{
             console.log(result)
-            navigate('/')
+            navigate(location.state ? location.state : '/')
                      
         })
         .catch((error)=>{
@@ -31,7 +33,7 @@ const LogIn = () => {
         signInWithPopup(auth,provider)
         .then(result =>{
             console.log(result.user)
-            navigate('/')
+            navigate(location.state ? location.state : '/')
         })
         .catch(error=>console.log(error.message))
     }

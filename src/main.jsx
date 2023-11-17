@@ -57,7 +57,7 @@ const router = createBrowserRouter([
       },
       {
         path:"/manage",
-        element: <ManageFood></ManageFood>
+        element: <PrivateRoute><ManageFood></ManageFood></PrivateRoute>
       },
       {
         path:"/manage/:id",

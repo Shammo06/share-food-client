@@ -1,6 +1,6 @@
 import { updateProfile } from "firebase/auth";
 import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import { AuthContext } from "../../AuthContext/AuthProvider";
 
@@ -8,14 +8,15 @@ import { AuthContext } from "../../AuthContext/AuthProvider";
 const Registration = () => {
     const {createUser} = useContext(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
+    
     const handleSubmit = e => {
         e.preventDefault();
         const name = e.target.name.value;
         const photo = e.target.photo.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(name,photo,password,email);
-
+       
         if (password.length < 6) {
             swal({
                 text: "Password should be at least 6 letter",
@@ -45,7 +46,7 @@ const Registration = () => {
                 photoURL:photo
             })
             swal('Successfully Registered')
-            navigate('/')       
+            navigate(location.state ? location.state : '/')      
                            
         })
         .catch((error) => {
