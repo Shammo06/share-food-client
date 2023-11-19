@@ -21,7 +21,6 @@ const MyReqFood = () => {
              })
             .then(res => res.json())
             .then(data => {
-                console.log(data._id)
                 if (data.deletedCount > 0) {
                     swal("Deleted!", "Your product has been removed.", "success");                    
                     const remaining = data.filter(item => item._id !== id);
@@ -36,7 +35,7 @@ const MyReqFood = () => {
       
     }
 
-    console.log(data,user)
+    
 
     return (
         <div>

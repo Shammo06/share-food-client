@@ -19,6 +19,8 @@ const SingleFood = () => {
            pickup: data.pickup,
            reqDate: reqDate,
            reqEmail:user.email,
+           reqName:user.displayName,
+           reqImage:user.photoURL,
            donation: data.donorEmail,
            donationName: data.donorName,
            status: data.status,

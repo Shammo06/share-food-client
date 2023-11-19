@@ -13,7 +13,11 @@ const AvailableFood = () => {
     
     useEffect(()=>{
         axios(`http://localhost:5000/food?foodName=${value?.value}&date=${sort?.value}`,{withCredentials:true})
-        .then(res=> setData(res.data))
+        .then(res=> {
+            const data = res.data
+            const remaining = data.filter(data => data.foodId === 'Available');
+            setData(remaining);
+        })
     })
 
         const options = [

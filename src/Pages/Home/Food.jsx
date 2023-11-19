@@ -9,8 +9,10 @@ const Food = () => {
 
     useEffect(()=>{
         axios.get('http://localhost:5000/food?date=1')
-        .then(response => {
-          setData(response.data);
+        .then(res=> {
+            const data = res.data
+            const remaining = data.filter(data => data.foodId === 'Available');
+            setData(remaining);
         })
         .catch(error => {
           console.log(error);
