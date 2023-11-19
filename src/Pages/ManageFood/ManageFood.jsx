@@ -1,13 +1,14 @@
+/* eslint-disable react/prop-types */
 
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
-//import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useTable } from 'react-table';
 import swal from 'sweetalert';
 import { AuthContext } from '../../AuthContext/AuthProvider';
 
 const ManageFood = () => {
-    //const navigate = useNavigate();
+    const navigate = useNavigate();
     const {user} = useContext(AuthContext);
     const [data,setData] = useState([]) 
    
@@ -16,10 +17,8 @@ const ManageFood = () => {
         .then(data=> setData(data.data))
     })
 
-    
 
-    const handleDelete = (data) =>{
-      console.log(data)        
+    const handleDelete = (id) =>{              
         fetch(`http://localhost:5000/food/${id}`, {
             method: 'DELETE'
              })
@@ -27,19 +26,17 @@ const ManageFood = () => {
             .then(data => {
                 console.log(data._id)
                 if (data.deletedCount > 0) {
-                    swal("Deleted!", "Your product has been removed.", "success");
-                    
+                    swal("Deleted!", "Your product has been removed.", "success");                    
                     const remaining = data.filter(item => item._id !== id);
                     setData(remaining);
                     
                 }
             })
-        }
-    
+        }   
 
     const handleEdit = (id) =>{
       console.log(id)
-      //navigate(`manage/${data._id}`)
+      navigate(`/manage/${id}`)
     }
 
 const columns = React.useMemo(

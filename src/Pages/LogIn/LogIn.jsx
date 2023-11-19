@@ -11,8 +11,8 @@ const LogIn = () => {
     
     const provider = new GoogleAuthProvider();
     const {logIn} = useContext(AuthContext);
-    // const navigate = useNavigate();
-    // const location = useLocation();
+    const navigate = useNavigate();
+    const location = useLocation();
    
 
     const handleSubmit = e =>{       
@@ -25,7 +25,7 @@ const LogIn = () => {
             const user = {email}
             axios.post('http://localhost:5000/jwt',user,{withCredentials:true} )
             .then(res => console.log(res.data))
-            // navigate(location.state ? location.state : '/')
+            navigate(location.state ? location.state : '/')
                      
         })
         .catch((error)=>{
@@ -41,7 +41,7 @@ const LogIn = () => {
             const user = {email}
             axios.post('http://localhost:5000/jwt',user,{withCredentials:true})
             .then(res => console.log(res.data))
-            // navigate(location.state ? location.state : '/')
+            navigate(location.state ? location.state : '/')
         })
         .catch(error=>console.log(error.message))
     }

@@ -5,38 +5,35 @@ import Select from 'react-select';
 
 
 const AvailableFood = () => {
-
-
     const navigate = useNavigate();
 
-   const [value,setValue] = useState({value:''});
-   const [sort,setSort] = useState({value:1}); 
-   const [data,setData] = useState([])
-   
-   
-   useEffect(()=>{
-       axios(`http://localhost:5000/food?foodName=${value?.value}&date=${sort?.value}`,{access:'ss'},{withCredentials:true})
-       .then(data=> setData(data.data))
-   })
+    const [value,setValue] = useState({value:''});
+    const [sort,setSort] = useState({value:1}); 
+    const [data,setData] = useState([])    
+    
+    useEffect(()=>{
+        axios(`http://localhost:5000/food?foodName=${value?.value}&date=${sort?.value}`,{withCredentials:true})
+        .then(res=> setData(res.data))
+    })
 
-    const options = [
-        { value: '', label: 'All Food' },
-        { value: 'Biriyani', label: 'Biriyani' },
-        { value: 'Mutton', label: 'Mutton' },
-        { value: 'Chicken', label: 'Chicken' },
-        { value: 'Curdd', label: 'Curd' },
-        { value: 'Khichuri', label: 'Khichuri' }
-    ];
-    const sorting = [
-        { value: 1, label: 'Oldest' },
-        { value: -1, label: 'Newest' },
-    ];
-
+        const options = [
+            { value: '', label: 'All Food' },
+            { value: 'Biriyani', label: 'Biriyani' },
+            { value: 'Mutton', label: 'Mutton' },
+            { value: 'Chicken', label: 'Chicken' },
+            { value: 'Curdd', label: 'Curd' },
+            { value: 'Khichuri', label: 'Khichuri' }
+        ];
+        const sorting = [
+            { value: 1, label: 'Oldest' },
+            { value: -1, label: 'Newest' },
+        ];
 
 
-    const handleClick = (id) => {
-        navigate(`/food/${id}`)
-    }
+
+        const handleClick = (id) => {
+            navigate(`/food/${id}`)
+        }
 
     return (
        <div className="">

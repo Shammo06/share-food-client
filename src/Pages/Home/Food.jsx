@@ -8,7 +8,7 @@ const Food = () => {
     const navigate = useNavigate();
 
     useEffect(()=>{
-        axios.get('http://localhost:5000/food')
+        axios.get('http://localhost:5000/food?date=1')
         .then(response => {
           setData(response.data);
         })
@@ -24,6 +24,7 @@ const Food = () => {
     const handleView = () =>{
         navigate('/availableFood')
     }
+    
 
     return (
         <div className="">
