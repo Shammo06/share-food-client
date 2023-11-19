@@ -15,7 +15,7 @@ const AvailableFood = () => {
         axios(`http://localhost:5000/food?foodName=${value?.value}&date=${sort?.value}`,{withCredentials:true})
         .then(res=> {
             const data = res.data
-            const remaining = data.filter(data => data.foodId === 'Available');
+            const remaining = data.filter(data => data.status === 'Available');
             setData(remaining);
         })
     })
