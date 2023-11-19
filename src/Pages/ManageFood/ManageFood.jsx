@@ -1,17 +1,19 @@
 
-import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import React, { useContext, useEffect, useState } from 'react';
 //import { useNavigate } from 'react-router-dom';
 import { useTable } from 'react-table';
 import swal from 'sweetalert';
+import { AuthContext } from '../../AuthContext/AuthProvider';
 
 const ManageFood = () => {
     //const navigate = useNavigate();
+    const {user} = useContext(AuthContext);
     const [data,setData] = useState([]) 
    
     useEffect(()=>{
-        fetch(`http://localhost:5000/food?foodName=Chicken`)
-        .then(res => res.json())
-        .then(data=> setData(data))
+        axios.get(`http://localhost:5000/food?donorEmail=${user?.email}`,{withCredentials:true})
+        .then(data=> setData(data.data))
     })
 
     

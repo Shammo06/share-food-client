@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Select from 'react-select';
@@ -14,9 +15,8 @@ const AvailableFood = () => {
    
    
    useEffect(()=>{
-       fetch(`http://localhost:5000/food?foodName=${value?.value}&date=${sort?.value}`)
-       .then(res => res.json())
-       .then(data=> setData(data))
+       axios(`http://localhost:5000/food?foodName=${value?.value}&date=${sort?.value}`,{access:'ss'},{withCredentials:true})
+       .then(data=> setData(data.data))
    })
 
     const options = [

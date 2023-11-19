@@ -4,14 +4,15 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthContext/AuthProvider";
 import auth from "../../firebase/firebase.config";
 import swal from "sweetalert";
+import axios from "axios";
 
 
 const LogIn = () => {
     
     const provider = new GoogleAuthProvider();
     const {logIn} = useContext(AuthContext);
-    const navigate = useNavigate();
-    const location = useLocation();
+    // const navigate = useNavigate();
+    // const location = useLocation();
    
 
     const handleSubmit = e =>{       
@@ -21,7 +22,10 @@ const LogIn = () => {
         logIn(email,password)
         .then(result=>{
             console.log(result)
-            navigate(location.state ? location.state : '/')
+            const user = {email}
+            axios.post('http://localhost:5000/jwt',user,{withCredentials:true} )
+            .then(res => console.log(res.data))
+            // navigate(location.state ? location.state : '/')
                      
         })
         .catch((error)=>{
@@ -32,8 +36,12 @@ const LogIn = () => {
     const handleClick = () => {
         signInWithPopup(auth,provider)
         .then(result =>{
-            console.log(result.user)
-            navigate(location.state ? location.state : '/')
+            console.log(result.user.email)
+            const email = result.user.email
+            const user = {email}
+            axios.post('http://localhost:5000/jwt',user,{withCredentials:true})
+            .then(res => console.log(res.data))
+            // navigate(location.state ? location.state : '/')
         })
         .catch(error=>console.log(error.message))
     }
