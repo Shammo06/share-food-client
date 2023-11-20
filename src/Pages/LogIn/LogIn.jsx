@@ -5,6 +5,7 @@ import { AuthContext } from "../../AuthContext/AuthProvider";
 import auth from "../../firebase/firebase.config";
 import swal from "sweetalert";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 
 const LogIn = () => {
@@ -47,7 +48,9 @@ const LogIn = () => {
     }
     return (
         <div className="py-10 bg-purple-200 ">
-            
+            <Helmet>
+                <title>Feeding World | LogIn</title>
+            </Helmet>
         <form onSubmit={handleSubmit} className=" w-80 md:w-96 bg-stone-200 mx-auto card-body border-2 bg- border-green-500">
             <div className="form-control">
             <span className="text-2xl text-center font-semibold text-green-500">Please Log In</span>

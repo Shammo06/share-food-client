@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTable } from 'react-table';
 import swal from 'sweetalert';
 import { AuthContext } from '../../AuthContext/AuthProvider';
+import { Helmet } from 'react-helmet-async';
 
 const ManageFood = () => {
     const navigate = useNavigate();
@@ -147,6 +148,9 @@ const columns = React.useMemo(
           );
         })}
       </tbody>
+      <Helmet>
+          <title>Feeding World | Manage</title>
+      </Helmet>
     </table>
   );
 };

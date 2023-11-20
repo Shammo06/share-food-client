@@ -2,6 +2,7 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthContext/AuthProvider";
 import swal from "sweetalert";
+import { Helmet } from "react-helmet-async";
 
 
 const MyReqFood = () => {
@@ -51,6 +52,9 @@ const MyReqFood = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Feeding World | Request Food</title>
+            </Helmet>
             {
                 data? 
                 <><div className="overflow-x-auto">

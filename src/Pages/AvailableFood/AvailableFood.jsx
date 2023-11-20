@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useNavigate } from 'react-router-dom';
 import Select from 'react-select';
 
@@ -40,6 +41,9 @@ const AvailableFood = () => {
 
     return (
        <div className="">
+            <Helmet>
+                <title>Feeding World | Available Food</title>
+            </Helmet>
             <div>
                 <div className="w-80 gap-4">
                     <h1>Sort By Food Name</h1>

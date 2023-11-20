@@ -4,6 +4,7 @@ import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../AuthContext/AuthProvider";
 import moment from 'moment';
 import swal from "sweetalert";
+import { Helmet } from "react-helmet-async";
 
 
 const SingleFood = () => {
@@ -29,7 +30,8 @@ const SingleFood = () => {
            expire: data.date
           })
           .then(response  => {
-            if(response.statusText==='OK'){
+            console.log(response.data.insertedId)
+            if(response.data.insertedId){
                 swal("Successfully", "Your Food has been Added.", "success");
             }
           })
@@ -40,6 +42,9 @@ const SingleFood = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Feeding World | {data.foodName}</title>
+            </Helmet>
             <div className="md:hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center">

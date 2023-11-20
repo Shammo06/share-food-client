@@ -3,9 +3,11 @@ import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import { AuthContext } from "../../AuthContext/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 
 const Registration = () => {
+    
     const {createUser,logOut} = useContext(AuthContext);
     const navigate = useNavigate();
         
@@ -58,6 +60,9 @@ const Registration = () => {
     }
     return (        
         <div className="py-10 bg-purple-200 ">
+            <Helmet>
+                <title>Feeding World | Registration</title>
+            </Helmet>
         <form onSubmit={handleSubmit} className="card-body w-80 md:w-96 bg-stone-200 mx-auto border-2 bg- border-green-500">
             <div className="form-control">
             <label className="label">

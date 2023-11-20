@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthContext/AuthProvider";
 import { useParams } from "react-router-dom";
 import swal from "sweetalert";
+import { Helmet } from "react-helmet-async";
 
 
 const Manage = () => {
@@ -11,7 +12,7 @@ const Manage = () => {
     const {id} = useParams();
 
     useEffect(()=>{
-        axios.get(`https://share-food-omega.vercel.app/requestfood?reqEmail=${user?.email}`,{withCredentials:true})
+        axios.get(`https://share-food-omega.vercel.app/requestfood?donation=${user?.email}`)
         .then(res=> {
             const data = res.data
             const remaining = data.filter(data => data.foodId === id);
@@ -54,6 +55,9 @@ const Manage = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Feeding World | Manage </title>
+            </Helmet>
            {
                 data? 
                 <><div className="overflow-x-auto">

@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../AuthContext/AuthProvider";
 import axios from "axios";
 import swal from "sweetalert";
+import { Helmet } from "react-helmet-async";
 
 
 const AddFood = () => {
@@ -42,7 +43,10 @@ const AddFood = () => {
       );
    
     return (
-        <div>            
+        <div> 
+            <Helmet>
+                <title>Feeding World | Add Food</title>
+            </Helmet>           
             <form className="md:grid grid-cols-2 md:pl-20 py-8 lg:mx-80 gap-3 bg-gray-600" onSubmit={handleSubmit(onSubmit)}>
               <h1 className="col-span-2 mx-auto w-1/2 text-3xl font-bold text-white">ADD FOOD</h1>
                 <Input label='Food Name' name='foodName' placeholder="Food Name"/>

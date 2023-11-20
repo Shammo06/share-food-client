@@ -19,6 +19,7 @@ import AddFood from './Pages/AddFood/AddFood';
 import ManageFood from './Pages/ManageFood/ManageFood';
 import Manage from './Pages/Manage/Manage';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
+import { HelmetProvider } from 'react-helmet-async';
 
 const router = createBrowserRouter([
   {
@@ -61,7 +62,8 @@ const router = createBrowserRouter([
       },
       {
         path:"/manage/:id",
-        element: <PrivateRoute><Manage></Manage></PrivateRoute>
+        element: <PrivateRoute><Manage></Manage></PrivateRoute>,
+        loader: ({ params }) => fetch(`https://share-food-omega.vercel.app/food/${params.id}`) 
       }
     ]
   },
@@ -69,6 +71,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-   <AuthProvider><RouterProvider router={router} /></AuthProvider>
+   <AuthProvider>
+    <HelmetProvider><RouterProvider router={router}/></HelmetProvider>
+   </AuthProvider>
   </React.StrictMode>,
 )
