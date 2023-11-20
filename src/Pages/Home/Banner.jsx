@@ -1,6 +1,11 @@
+import { useNavigate } from 'react-router-dom';
 import picture from '../../../public/pexels-rachel-claire-4997810.jpg'
 
 const Banner = () => {
+    const navigate = useNavigate();
+    const handleClick =() =>{
+        navigate('/addFood')
+    }
     return (
         <div className="hero min-h-screen" style={{backgroundImage: `url(${picture})`}}>
         <div className="hero-overlay bg-opacity-60"></div>
@@ -8,7 +13,7 @@ const Banner = () => {
             <div className="mx-auto">
             <h1 className="mb-5 text-5xl font-bold">DO NOT WASTE FOOD</h1>
             <p className="mb-5">Share your food, Remove hunger from Earth</p>
-            <button className="btn btn-primary">Donate Food</button>
+            <button onClick={handleClick} className="btn btn-primary">Donate Food</button>
             </div>
         </div>
         </div>

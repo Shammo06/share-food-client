@@ -18,20 +18,35 @@ const ManageFood = () => {
     })
 
 
-    const handleDelete = (id) =>{              
-        fetch(`http://localhost:5000/food/${id}`, {
-            method: 'DELETE'
-             })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data._id)
-                if (data.deletedCount > 0) {
-                    swal("Deleted!", "Your product has been removed.", "success");                    
-                    const remaining = data.filter(item => item._id !== id);
-                    setData(remaining);
+    const handleDelete = (id) =>{
+        swal({
+          title: "Are you sure?",
+          text: "Once deleted, you will not be able to recover this donate food details",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+            fetch(`http://localhost:5000/food/${id}`,{
+              method: 'DELETE'
+               })
+              .then(res => res.json())
+              .then(data => {
+                  console.log(data._id)
+                  if (data.deletedCount > 0) {
+                      swal("Deleted!", "Your product has been removed.", "success");                    
+                      const remaining = data.filter(item => item._id !== id);
+                      setData(remaining);
+                      
+                  }
+              })
+          } else {
+            swal("Your Donation is safe!");
+          }
+        });
                     
-                }
-            })
+       
         }   
 
     const handleEdit = (id) =>{
@@ -50,14 +65,6 @@ const columns = React.useMemo(
         accessor: 'quantity',
       },
       {
-        Header: 'Pickup Location',
-        accessor: 'pickup',
-      },
-      {
-        Header: 'Additional Notes',
-        accessor: 'additionalNotes',
-      },
-      {
         Header: 'Donor Name',
         accessor: 'donorName',
       },
@@ -65,6 +72,14 @@ const columns = React.useMemo(
         Header: 'Donor Email',
         accessor: 'donorEmail',
       },
+      {
+        Header: 'Pickup Location',
+        accessor: 'pickup',
+      },
+      {
+        Header: 'Additional Notes',
+        accessor: 'additionalNotes',
+      },      
       {
         Header: 'Status',
         accessor: 'status',

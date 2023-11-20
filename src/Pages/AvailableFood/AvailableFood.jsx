@@ -6,7 +6,6 @@ import Select from 'react-select';
 
 const AvailableFood = () => {
     const navigate = useNavigate();
-
     const [value,setValue] = useState({value:''});
     const [sort,setSort] = useState({value:1}); 
     const [data,setData] = useState([])    
@@ -25,7 +24,7 @@ const AvailableFood = () => {
             { value: 'Biriyani', label: 'Biriyani' },
             { value: 'Mutton', label: 'Mutton' },
             { value: 'Chicken', label: 'Chicken' },
-            { value: 'Curdd', label: 'Curd' },
+            { value: 'Curd', label: 'Curd' },
             { value: 'Khichuri', label: 'Khichuri' }
         ];
         const sorting = [
@@ -85,10 +84,12 @@ const AvailableFood = () => {
                             <p>{data.additionalNotes}</p>                            
                             <div className="">
                                 <h2 className="card-title">
-                                Donate By:<br/> {data.donatorName}
-                                <div className="badge badge-secondary">{data.donatorImage}</div>
+                                Donate By:<br/> {data.donorName}
+                                <div className="w-14 rounded-full">
+                                    <img src={data.donorImage} />
+                                </div>
                                 </h2>
-                                Email: {data.donatorEmail}
+                                Email: {data.donorEmail}
                             </div>
                             <button onClick={() => handleClick(data._id)} className='btn btn-primary'>View Details</button>
                         </div>

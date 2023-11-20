@@ -1,15 +1,14 @@
 import { updateProfile } from "firebase/auth";
 import { useContext } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import { AuthContext } from "../../AuthContext/AuthProvider";
 
 
 const Registration = () => {
-    const {createUser} = useContext(AuthContext);
+    const {createUser,logOut} = useContext(AuthContext);
     const navigate = useNavigate();
-    const location = useLocation();
-    
+        
     const handleSubmit = e => {
         e.preventDefault();
         const name = e.target.name.value;
@@ -45,8 +44,9 @@ const Registration = () => {
                 displayName: name,
                 photoURL:photo
             })
-            swal('Successfully Registered')
-            navigate(location.state ? location.state : '/')      
+            logOut()
+            swal('Successfully Registered Please Log In')
+            navigate('/LogIn')      
                            
         })
         .catch((error) => {

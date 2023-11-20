@@ -16,7 +16,16 @@ const MyReqFood = () => {
 
     const handleClick = (id,status) =>{
       if(status==="Available"){
-        fetch(`http://localhost:5000/requestfood/${id}`, {
+        swal({
+          title: "Are you sure?",
+          text: "Once deleted, you will not be able to recover your request",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+            fetch(`http://localhost:5000/requestfood/${id}`, {
             method: 'DELETE'
              })
             .then(res => res.json())
@@ -28,6 +37,9 @@ const MyReqFood = () => {
                     
                 }
             })
+          } 
+        });
+        
       }
       else{
         swal("Already Delivered", "Cannot Remove.", "error");   

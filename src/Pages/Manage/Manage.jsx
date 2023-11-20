@@ -2,6 +2,7 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../AuthContext/AuthProvider";
 import { useParams } from "react-router-dom";
+import swal from "sweetalert";
 
 
 const Manage = () => {
@@ -36,6 +37,7 @@ const Manage = () => {
                     const updated = data.find(data => data._id === reqId);
                     const newData = [updated, ...remaining];
                     setData(newData);
+                    swal("Your food successfully marked as delivered");
                 }
             })
         //for all food    
@@ -86,7 +88,7 @@ const Manage = () => {
                 </div></>
                 
               :
-              <p>No Food Request Available</p>
+              <p>No Food Request Available for this food</p>
 
             }          
         </div>
