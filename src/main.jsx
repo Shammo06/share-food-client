@@ -41,7 +41,7 @@ const router = createBrowserRouter([
       {
         path:"/food/:id",
         element:<PrivateRoute><SingleFood></SingleFood></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/food/${params.id}`) 
+        loader: ({ params }) => fetch(`https://share-food-omega.vercel.app/food/${params.id}`) 
       },
       {
         path:"/availableFood",

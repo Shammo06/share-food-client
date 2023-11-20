@@ -11,7 +11,7 @@ const Manage = () => {
     const {id} = useParams();
 
     useEffect(()=>{
-        axios.get(`http://localhost:5000/requestfood?reqEmail=${user?.email}`,{withCredentials:true})
+        axios.get(`https://share-food-omega.vercel.app/requestfood?reqEmail=${user?.email}`,{withCredentials:true})
         .then(res=> {
             const data = res.data
             const remaining = data.filter(data => data.foodId === id);
@@ -22,7 +22,7 @@ const Manage = () => {
 
       const handleClick = (reqId,foodId) => {
         //for reqfood
-        fetch(`http://localhost:5000/requestfood/${reqId}`, {
+        fetch(`https://share-food-omega.vercel.app/requestfood/${reqId}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
@@ -41,7 +41,7 @@ const Manage = () => {
                 }
             })
         //for all food    
-        fetch(`http://localhost:5000/food/${foodId}`, {
+        fetch(`https://share-food-omega.vercel.app/food/${foodId}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

@@ -23,7 +23,7 @@ const LogIn = () => {
         .then(result=>{
             console.log(result)
             const user = {email}
-            axios.post('http://localhost:5000/jwt',user,{withCredentials:true} )
+            axios.post('https://share-food-omega.vercel.app/jwt',user,{withCredentials:true} )
             .then(res => console.log(res.data))
             navigate(location.state ? location.state : '/')
                      
@@ -39,7 +39,7 @@ const LogIn = () => {
             console.log(result.user.email)
             const email = result.user.email
             const user = {email}
-            axios.post('http://localhost:5000/jwt',user,{withCredentials:true})
+            axios.post('https://share-food-omega.vercel.app/jwt',user,{withCredentials:true})
             .then(res => console.log(res.data))
             navigate(location.state ? location.state : '/')
         })

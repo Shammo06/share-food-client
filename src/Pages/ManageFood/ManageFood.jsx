@@ -13,7 +13,7 @@ const ManageFood = () => {
     const [data,setData] = useState([]) 
    
     useEffect(()=>{
-        axios.get(`http://localhost:5000/food?donorEmail=${user?.email}`,{withCredentials:true})
+        axios.get(`https://share-food-omega.vercel.app/food?donorEmail=${user?.email}`,{withCredentials:true})
         .then(data=> setData(data.data))
     })
 
@@ -28,7 +28,7 @@ const ManageFood = () => {
         })
         .then((willDelete) => {
           if (willDelete) {
-            fetch(`http://localhost:5000/food/${id}`,{
+            fetch(`https://share-food-omega.vercel.app/food/${id}`,{
               method: 'DELETE'
                })
               .then(res => res.json())

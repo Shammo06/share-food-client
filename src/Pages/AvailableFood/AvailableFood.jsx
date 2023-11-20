@@ -11,7 +11,7 @@ const AvailableFood = () => {
     const [data,setData] = useState([])    
     
     useEffect(()=>{
-        axios(`http://localhost:5000/food?foodName=${value?.value}&date=${sort?.value}`,{withCredentials:true})
+        axios(`https://share-food-omega.vercel.app/food?foodName=${value?.value}&date=${sort?.value}`,{withCredentials:true})
         .then(res=> {
             const data = res.data
             const remaining = data.filter(data => data.status === 'Available');

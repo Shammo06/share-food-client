@@ -12,7 +12,7 @@ const SingleFood = () => {
     const reqDate = moment().format('YYYY-MM-DD')
        
     const handleClick = (note,money) => {                 
-        axios.post('http://localhost:5000/requestfood', {
+        axios.post('https://share-food-omega.vercel.app/requestfood', {
            foodName:data.foodName,
            foodImage:data.foodImage,
            foodId : data._id,

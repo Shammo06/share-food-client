@@ -8,7 +8,7 @@ const Food = () => {
     const navigate = useNavigate();
 
     useEffect(()=>{
-        axios.get('http://localhost:5000/food?date=1')
+        axios.get('https://share-food-omega.vercel.app/food?date=1')
         .then(res=> {
             const data = res.data
             const remaining = data.filter(data => data.status === 'Available');
@@ -49,10 +49,12 @@ const Food = () => {
                             <p>{data.additionalNotes}</p>                            
                             <div className="">
                                 <h2 className="card-title">
-                                Donate By:<br/> {data.donatorName}
-                                <div className="badge badge-secondary">{data.donatorImage}</div>
+                                Donate By:<br/> {data.donorName}
+                                <div className="w-14 rounded-full">
+                                    <img src={data.donorImage} />
+                                </div>
                                 </h2>
-                                Email: {data.donatorEmail}
+                                Email: {data.donorEmail}
                             </div>
                             <button onClick={() => handleClick(data._id)} className='btn btn-primary '>View Details</button>
                         </div>

@@ -11,7 +11,7 @@ const AddFood = () => {
     const {user} = useContext(AuthContext);
     
     const onSubmit = data => {
-      axios.post('http://localhost:5000/food', data)
+      axios.post('https://share-food-omega.vercel.app/food', data)
        .then(response  => {
          if(response.statusText==='OK'){
              swal("Successfully", "Your Food has been Added.", "success");
